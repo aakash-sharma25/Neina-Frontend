@@ -14,7 +14,7 @@ const DisplayBooking = ({ bookings, removeBooking, loading }) => {
   const deleteBooking = async (bookingId) => {
     try {
       const { data } = await axios.delete(
-        `http://localhost:5000/api/booking/${bookingId}`
+        `https://neina-backend-km11.onrender.com/api/booking/${bookingId}`
       );
 
       if (data.success) {

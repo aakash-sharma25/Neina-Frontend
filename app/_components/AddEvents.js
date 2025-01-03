@@ -28,7 +28,7 @@ const AddEvents = ({ addBooking }) => {
   const fetchAvailableSlots = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:5000/api/booking/availability"
+        "https://neina-backend-km11.onrender.com/api/booking/availability"
       );
       if (data.success) {
         setAvailableSlots(data.availableSlots);
@@ -66,11 +66,14 @@ const AddEvents = ({ addBooking }) => {
       }
 
       const [date, time] = formData.slot.split(" ");
-      const { data } = await axios.post("http://localhost:5000/api/booking", {
-        ...formData,
-        date,
-        time,
-      });
+      const { data } = await axios.post(
+        "https://neina-backend-km11.onrender.com/api/booking",
+        {
+          ...formData,
+          date,
+          time,
+        }
+      );
 
       if (data.success) {
         addBooking(data.booking);
