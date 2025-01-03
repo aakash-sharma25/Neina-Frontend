@@ -4,6 +4,7 @@ import AddEvents from "./_components/AddEvents";
 import DisplayBooking from "./_components/DisplayBooking";
 import axios from "axios";
 import { AppBar, Box, Toolbar } from "@mui/material";
+import Header from "./_components/Header";
 
 export default function Home() {
   const [bookings, setBookings] = useState([]);
@@ -42,13 +43,7 @@ export default function Home() {
 
   return (
     <>
-      <Toolbar>
-        <AppBar>
-          <Box>
-            <p>Neina Assignment</p>
-          </Box>
-        </AppBar>
-      </Toolbar>
+      <Header/>
       <AddEvents addBooking={addBooking} />
       <div>
         <DisplayBooking
