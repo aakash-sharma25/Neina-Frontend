@@ -30,7 +30,7 @@ export default function Home() {
   };
 
   const addBooking = (newBooking) => {
-    setBookings((prev) => [...prev, newBooking]);
+    setBookings((prev) => [newBooking, ...prev]);
   };
 
   const removeBooking = (bookingId) => {
@@ -43,7 +43,7 @@ export default function Home() {
 
   return (
     <>
-      <Header/>
+      <Header />
       <AddEvents addBooking={addBooking} />
       <div>
         <DisplayBooking

@@ -1,12 +1,22 @@
 "use client";
 import { Box, Button, Card, CardContent, Typography } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 
 export default function EventCard({ bookings, deleteBooking }) {
   return (
-    <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2, mt: 2 }}>
+    <Box
+      sx={{
+        display: "flex",
+        flexWrap: "wrap",
+        gap: 2,
+        mt: 2,
+        alignItems: "center",
+        justifyContent: "center",
+        gap: 3,
+      }}
+    >
       {bookings?.map((booking) => (
-        <Card key={booking._id} sx={{ width: 300 ,padding:3 }}>
+        <Card key={booking._id} sx={{ width: 300, padding: 3 }}>
           <CardContent>
             <Typography variant="h6">Name: {booking.name}</Typography>
             <Typography>Date: {booking.date}</Typography>

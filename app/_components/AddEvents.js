@@ -17,6 +17,7 @@ import axios from "axios";
 
 const AddEvents = ({ addBooking }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     contact: "",
@@ -47,6 +48,7 @@ const AddEvents = ({ addBooking }) => {
   };
 
   const handleSubmit = async () => {
+    setLoading(true);
     try {
       if (formData.name.trim() === "") {
         alert("Name is required");
@@ -65,13 +67,13 @@ const AddEvents = ({ addBooking }) => {
         return;
       }
 
-      const [date, time] = formData.slot.split(" ");
+      const [date, time, format] = formData.slot.split(" ");
       const { data } = await axios.post(
         "https://neina-backend-km11.onrender.com/api/booking",
         {
           ...formData,
           date,
-          time,
+          time: time + " " + format,
         }
       );
 
@@ -89,6 +91,8 @@ const AddEvents = ({ addBooking }) => {
       setIsOpen(false);
     } catch (error) {
       console.error("Error submitting booking:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -160,8 +164,13 @@ const AddEvents = ({ addBooking }) => {
           <Button onClick={() => setIsOpen(false)} color="secondary">
             Cancel
           </Button>
-          <Button onClick={handleSubmit} color="primary" variant="contained">
-            Submit
+          <Button
+            disabled={loading}
+            onClick={handleSubmit}
+            color="primary"
+            variant="contained"
+          >
+            {loading ? "Submiting" : "Submit"}
           </Button>
         </DialogActions>
       </Dialog>
