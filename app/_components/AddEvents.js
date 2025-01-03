@@ -99,9 +99,11 @@ const AddEvents = ({ addBooking }) => {
 
   return (
     <Box>
-      <Button variant="contained" color="primary" onClick={openModal}>
-        Add Event
-      </Button>
+      <Box sx={{ display: "flex", justifyContent: "flex-end", margin: 2 }}>
+        <Button variant="contained" color="primary" onClick={openModal}>
+          + Add Event
+        </Button>
+      </Box>
 
       <Dialog open={isOpen} fullWidth maxWidth="sm">
         <DialogTitle>Add Reservation</DialogTitle>
