@@ -12,7 +12,9 @@ export default function Home() {
   const fetchBookings = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.get("http://localhost:5000/api/booking");
+      const { data } = await axios.get(
+        "https://neina-backend-km11.onrender.com/api/booking"
+      );
       if (data.success) {
         setBookings(data.bookings);
       } else {
