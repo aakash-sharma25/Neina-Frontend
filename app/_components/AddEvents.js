@@ -55,7 +55,7 @@ const AddEvents = ({ addBooking }) => {
         return;
       }
       if (formData.contact.length < 10) {
-        alert("Contact is required");
+        alert("Contact is required or length should be 10");
         return;
       }
       if (formData.guest === "" || formData.guest <= 0) {
